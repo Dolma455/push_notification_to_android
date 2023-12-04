@@ -34,7 +34,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
- 
+  void setUpPushNotification() async {
+    final fcm = FirebaseMessaging.instance;
+    await fcm.requestPermission();
+    final token = await fcm.getToken();
+    print(token);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setUpPushNotification();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
