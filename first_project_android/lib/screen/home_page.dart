@@ -11,13 +11,23 @@ class HomePage extends StatelessWidget {
       ),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(colors: [
-            Color.fromARGB(255, 87, 59, 151),
-            Color.fromARGB(255, 85, 49, 134)
-          ]),
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 87, 59, 151),
+              Color.fromARGB(255, 85, 49, 134)
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
         ),
         child: const Center(
-          child: Text("Hello world"),
+          child: Text(
+            "Hello world",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30,
+            ),
+          ),
         ),
       ),
     );
