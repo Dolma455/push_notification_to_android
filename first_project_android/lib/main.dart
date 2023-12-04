@@ -37,8 +37,11 @@ class _MyAppState extends State<MyApp> {
   void setUpPushNotification() async {
     final fcm = FirebaseMessaging.instance;
     await fcm.requestPermission();
-    final token = await fcm.getToken();
-    print(token);
+    fcm.subscribeToTopic(
+        'chat'); //send notification to all who have installed app or subscribed
+
+    // final token = await fcm.getToken();
+    // print(token);
   }
 
   @override
