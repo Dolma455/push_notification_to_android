@@ -1,4 +1,3 @@
-import 'package:first_project_android/widget/styled_text.dart';
 import 'package:flutter/material.dart';
 
 //Recommended to use var keyword
@@ -34,6 +33,8 @@ class GradientContainer extends StatelessWidget {
   final Color color1;
   final Color color2;
 
+  rollDice() {}
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,7 +46,18 @@ class GradientContainer extends StatelessWidget {
         ),
       ),
       child: Center(
-        child: Image.asset('assets/images/dice_one.png'),
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          Image.asset('assets/images/dice_one.png'),
+          TextButton(
+            onPressed: rollDice,
+            style: TextButton.styleFrom(
+              padding: const EdgeInsets.all(16),
+              foregroundColor: Colors.white,
+              textStyle: const TextStyle(fontSize: 28),
+            ),
+            child: const Text('Roll Dice'),
+          )
+        ]),
       ),
     );
   }
