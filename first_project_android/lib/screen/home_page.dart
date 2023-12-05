@@ -1,8 +1,11 @@
 import 'package:first_project_android/widget/styled_text.dart';
 import 'package:flutter/material.dart';
 
-var startAlignment = Alignment.topLeft;
-var endAlignment = Alignment.bottomRight;
+//Recommended to use var keyword
+//const-> Stored data in memory and can be reused, locked at compiled time
+//final-> Cannot change value never
+const startAlignment = Alignment.topLeft;
+const endAlignment = Alignment.bottomRight;
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,29 +16,36 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Flutter Demo"),
       ),
-      body: const GradientContainer(),
+      body: const GradientContainer.purple(),
     );
   }
 }
 
 class GradientContainer extends StatelessWidget {
-  const GradientContainer({super.key});
+  const GradientContainer(
+    this.color1,
+    this.color2, {
+    super.key,
+  });
+
+  const GradientContainer.purple({super.key})
+      : color1 = Colors.deepPurple,
+        color2 = Colors.indigo;
+  final Color color1;
+  final Color color2;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: const [
-            Color.fromARGB(255, 87, 59, 151),
-            Color.fromARGB(255, 85, 49, 134)
-          ],
+          colors: [color1, color2],
           begin: startAlignment,
           end: endAlignment,
         ),
       ),
-      child: const Center(
-        child: StyledText(),
+      child: Center(
+        child: Image.asset('assets/images/dice_one.png'),
       ),
     );
   }
